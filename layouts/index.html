@@ -1,0 +1,16 @@
+{{ define "main" }}
+  <div class="intro">
+    {{ .Content }}
+  </div>
+
+  <h2 class="posts-heading">{{ if eq .Site.Language.Lang "ru" }}Последние посты{{ else }}Latest posts{{ end }}</h2>
+  <ul class="post-list">
+    {{ range (where .Site.RegularPages "Section" "posts") }}
+      <li class="post-item">
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <time>{{ .Date.Format "2006-01-02" }}</time>
+        {{ if .Params.summary }}<p>{{ .Params.summary }}</p>{{ end }}
+      </li>
+    {{ end }}
+  </ul>
+{{ end }}

@@ -1,0 +1,31 @@
+baseURL = "https://apchhui.github.io/sol-blog/"
+title = "My Dev Blog"
+defaultContentLanguage = "ru"
+defaultContentLanguageInSubdir = true
+enableRobotsTXT = true
+
+[languages]
+  [languages.ru]
+    languageName = "Русский"
+    weight = 1
+    contentDir = "content/ru"
+    title = "Мой блог"
+
+  [languages.en]
+    languageName = "English"
+    weight = 2
+    contentDir = "content/en"
+    title = "My Blog"
+
+[params]
+  description = "Заметки о разработке, трейд-ботах и не только / Notes on dev, trading bots and more"
+  author = "apchhui"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]

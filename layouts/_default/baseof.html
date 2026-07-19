@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ .Site.Params.description }}">
+  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+  <link rel="alternate" type="application/rss+xml" href="{{ "index.xml" | relURL }}">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-title" href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a>
+    <nav class="lang-switch">
+      {{ range .Site.Home.AllTranslations }}
+        <a href="{{ .RelPermalink }}"{{ if eq .Language.Lang $.Site.Language.Lang }} class="active"{{ end }}>{{ .Language.LanguageName }}</a>
+      {{ end }}
+    </nav>
+  </header>
+
+  <main class="content">
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; {{ now.Year }} {{ .Site.Params.author }}</p>
+  </footer>
+</body>
+</html>
